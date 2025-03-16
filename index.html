@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+<title>darts-board</title>
+</head><body>
+<script type="module">
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+const w = 1000;
+canvas.width = w;
+canvas.height = w;
+canvas.style.width = "100vw";
+canvas.style.height = "100vw";
+const g = canvas.getContext("2d");
+const ox = w / 2;
+const oy = w / 2;
+g.drawCircle = (ox, oy, r) => {
+  g.beginPath();
+  g.arc(ox, oy, r, 0, Math.PI * 2);
+  g.stroke();
+};
+g.fillCircle = (ox, oy, r) => {
+  g.beginPath();
+  g.arc(ox, oy, r, 0, Math.PI * 2);
+  g.fill();
+};
+g.fillStyle = "black";
+g.strokeStyle = "black";
+g.lineWidth = 5;
+const r0 = w / 2 * .9;
+g.fillCircle(ox, oy, r0);
+
+const r1 = r0 * .775;
+g.strokeStyle = "white";
+g.drawCircle(ox, oy, r1);
+
+const r2 = r0 * 0.480;
+const dr = r0 * 0.040;
+
+const colors2 = ["black", "#f5f590"];
+const colors1 = ["red", "green"];
+const dth =  Math.PI * 2 / 20;
+for (let j = 0; j < 4; j++) {
+  const r = [r1, r1 - dr, r2, r2 - dr][j];
+  const colors = [colors1, colors2][j % 2];
+  for (let i = 0; i < 20; i++) {
+    g.fillStyle = colors[i % 2];
+    g.beginPath();
+    const th = dth * i + dth / 2;
+    g.moveTo(ox, oy);
+    g.arc(ox, oy, r, th, th + dth);
+    g.stroke();
+    g.fill();
+  }
+}
+
+const r3 = r0 * .090;
+g.strokeStyle = "white";
+g.fillStyle = "green";
+g.drawCircle(ox, oy, r3);
+g.fill();
+
+const r4 = r0 * .040;
+g.strokeStyle = "white";
+g.fillStyle = "red";
+g.drawCircle(ox, oy, r4);
+g.fill();
+
+const fw = w * .06;
+g.font = fw + "px sans-serif";
+g.textAlign = "center";
+g.textBaseline = "middle";
+g.fillStyle = "white";
+const rt = (r0 + r1) / 2;
+for (let i = 0; i < 20; i++) {
+  const n = [6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5, 20, 1, 18, 4, 13][i];
+  const th = dth * i;
+  const x = Math.cos(th) * rt + ox;
+  const y = Math.sin(th) * rt + oy;
+  g.fillText(n, x, y);
+}
+</script>
+</body></html>

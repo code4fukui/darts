@@ -1,5 +1,7 @@
 # darts
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 A web-based darts board.
 
 ## Demo

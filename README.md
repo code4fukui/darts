@@ -12,4 +12,4 @@ A web-based darts board.
 - Displays scoring numbers and color-coded segments
 
 ## License
-MIT License
+MIT License — see [LICENSE](LICENSE).

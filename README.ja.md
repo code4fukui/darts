@@ -2,9 +2,6 @@
 
 darts ボードを描画するシンプルなHTML/JavaScriptアプリケーションです。
 
-## デモ
-https://code4fukui.github.io/darts/
-
 ## 機能
 - darts ボードの描画
 - 各セクターの番号表示
